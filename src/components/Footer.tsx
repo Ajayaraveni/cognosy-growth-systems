@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
+import logo from "@/assets/cognosy-logo-light.png";
 
 export const Footer = () => (
   <footer className="border-t hairline mt-32">
     <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 grid md:grid-cols-4 gap-12">
       <div className="md:col-span-2">
-        <Link to="/" className="flex items-center gap-2 font-display font-semibold text-lg">
-          <span className="w-7 h-7 rounded-lg bg-accent grid place-items-center text-accent-foreground font-bold">C</span>
-          Cognosy <span className="text-muted-foreground font-normal">AI</span>
+        <Link to="/" className="flex items-center" aria-label="Cognosy AI home">
+          <img src={logo} alt="Cognosy AI" className="h-9 w-auto" />
         </Link>
         <p className="mt-4 text-sm text-muted-foreground max-w-sm">
           AI Business Growth Systems for ambitious companies in the US, UK, UAE, Canada and Australia.
