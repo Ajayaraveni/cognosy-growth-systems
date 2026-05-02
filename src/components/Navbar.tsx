@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/cognosy-logo-light.png";
 
 const links = [
   { to: "/", label: "Home" },
@@ -32,9 +33,8 @@ export const Navbar = () => {
       }`}
     >
       <nav className="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 font-display font-semibold text-lg">
-          <span className="w-7 h-7 rounded-lg bg-accent grid place-items-center text-accent-foreground font-bold">C</span>
-          Cognosy <span className="text-muted-foreground font-normal">AI</span>
+        <Link to="/" className="flex items-center" aria-label="Cognosy AI home">
+          <img src={logo} alt="Cognosy AI" className="h-8 w-auto" />
         </Link>
 
         <div className="hidden md:flex items-center gap-1">
