@@ -55,6 +55,9 @@ const About = () => (
           Every system we build is owned by you, integrated with your stack, and measured against an outcome. No black boxes, no dependency, no vanity dashboards.
         </p>
       </div>
+      <p className="mt-10 text-sm text-muted-foreground">
+        We also train individuals and teams through <Link to="/academy" className="text-foreground hover:text-accent underline-offset-4 hover:underline">Cognosy Academy</Link>.
+      </p>
       <div className="mt-12">
         <Button asChild variant="hero" size="lg">
           <Link to="/contact">Work With Us <ArrowRight /></Link>

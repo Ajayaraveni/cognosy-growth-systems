@@ -9,6 +9,7 @@ const links = [
   { to: "/services", label: "Services" },
   { to: "/blog", label: "Blog" },
   { to: "/contact", label: "Contact" },
+  { to: "/academy", label: "Academy" },
 ];
 
 const socials = [
