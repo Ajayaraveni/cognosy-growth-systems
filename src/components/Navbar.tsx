@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Menu, X, Instagram, Youtube, Twitter } from "lucide-react";
 import logo from "@/assets/cognosy-logo-light.png";
 
 const links = [
@@ -10,6 +9,12 @@ const links = [
   { to: "/services", label: "Services" },
   { to: "/blog", label: "Blog" },
   { to: "/contact", label: "Contact" },
+];
+
+const socials = [
+  { href: "https://instagram.com", label: "Instagram", Icon: Instagram },
+  { href: "https://youtube.com", label: "YouTube", Icon: Youtube },
+  { href: "https://twitter.com", label: "Twitter", Icon: Twitter },
 ];
 
 export const Navbar = () => {
@@ -32,9 +37,9 @@ export const Navbar = () => {
         scrolled ? "bg-background/70 backdrop-blur-xl border-b hairline" : "bg-transparent"
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto px-6 lg:px-8 h-28 flex items-center justify-between">
         <Link to="/" className="flex items-center" aria-label="Cognosy AI home">
-          <img src={logo} alt="Cognosy AI" className="h-16 w-auto" />
+          <img src={logo} alt="Cognosy AI" className="h-24 w-auto" />
         </Link>
 
         <div className="hidden md:flex items-center gap-1">
@@ -54,10 +59,19 @@ export const Navbar = () => {
           ))}
         </div>
 
-        <div className="hidden md:block">
-          <Button asChild variant="hero" size="sm">
-            <Link to="/contact">Book Strategy Call</Link>
-          </Button>
+        <div className="hidden md:flex items-center gap-2">
+          {socials.map(({ href, label, Icon }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+              className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+            >
+              <Icon className="h-5 w-5" />
+            </a>
+          ))}
         </div>
 
         <button className="md:hidden text-foreground" onClick={() => setOpen(!open)} aria-label="menu">
@@ -80,9 +94,20 @@ export const Navbar = () => {
                 {l.label}
               </NavLink>
             ))}
-            <Button asChild variant="hero" size="sm" className="mt-2">
-              <Link to="/contact">Book Strategy Call</Link>
-            </Button>
+            <div className="flex items-center gap-2 px-3 pt-3">
+              {socials.map(({ href, label, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+                >
+                  <Icon className="h-5 w-5" />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       )}
