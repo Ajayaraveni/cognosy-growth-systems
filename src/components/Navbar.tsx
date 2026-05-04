@@ -32,9 +32,9 @@ export const Navbar = () => {
         scrolled ? "bg-background/70 backdrop-blur-xl border-b hairline" : "bg-transparent"
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between">
         <Link to="/" className="flex items-center" aria-label="Cognosy AI home">
-          <img src={logo} alt="Cognosy AI" className="h-12 w-auto" />
+          <img src={logo} alt="Cognosy AI" className="h-16 w-auto" />
         </Link>
 
         <div className="hidden md:flex items-center gap-1">
