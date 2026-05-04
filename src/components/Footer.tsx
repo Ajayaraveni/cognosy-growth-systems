@@ -6,7 +6,7 @@ export const Footer = () => (
     <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 grid md:grid-cols-4 gap-12">
       <div className="md:col-span-2">
         <Link to="/" className="flex items-center" aria-label="Cognosy AI home">
-          <img src={logo} alt="Cognosy AI" className="h-14 w-auto" />
+          <img src={logo} alt="Cognosy AI" className="h-20 w-auto" />
         </Link>
         <p className="mt-4 text-sm text-muted-foreground max-w-sm">
           AI Business Growth Systems for ambitious companies in the US, UK, UAE, Canada and Australia.
