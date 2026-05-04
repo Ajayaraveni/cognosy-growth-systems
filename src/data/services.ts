@@ -34,8 +34,8 @@ export const services = [
     outcome: "Inbound opportunities. Premium pricing. A reputation that opens doors.",
   },
   {
-    slug: "training",
-    title: "Training",
+    slug: "trainings",
+    title: "Trainings",
     short: "Help teams understand and use AI effectively.",
     what: "Hands-on training programs that turn your team into confident, daily users of AI — not bystanders.",
     who: "Leadership teams who want AI adopted across the company, not just by one person.",
