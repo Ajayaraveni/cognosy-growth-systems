@@ -59,7 +59,7 @@ const Index = () => {
       </section>
 
       {/* WHAT WE DO */}
-      <Section eyebrow="What We Do" title="Five systems. One growth engine." subtitle="We don't sell tools. We design and deploy structured systems that move your business forward.">
+      <Section eyebrow="What We Do" title="Five systems. One growth engine." subtitle="We don't sell tools. We design and deploy structured systems that move your business forward." className="section-alt">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-hairline border hairline rounded-2xl overflow-hidden">
           {services.map((s, i) => {
             const Icon = icons[i];
@@ -70,7 +70,7 @@ const Index = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
-                className="bg-background p-8 group hover:bg-surface transition-colors"
+                className="bg-background p-8 group hover:bg-surface transition-colors hover-lift"
               >
                 <div className="w-11 h-11 rounded-lg bg-secondary border hairline grid place-items-center mb-6 group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
                   <Icon className="w-5 h-5" />
@@ -120,7 +120,7 @@ const Index = () => {
       </Section>
 
       {/* WHO IT'S FOR */}
-      <Section eyebrow="Who It's For" title="Built for growing businesses." subtitle="We work with operators who are serious about scaling with structure.">
+      <Section eyebrow="Who It's For" title="Built for growing businesses." subtitle="We work with operators who are serious about scaling with structure." className="section-alt">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
             { i: Building2, t: "Clinics" },

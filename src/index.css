@@ -40,7 +40,7 @@
 
     --radius: 0.75rem;
 
-    --gradient-hero: radial-gradient(ellipse 80% 50% at 50% 0%, hsl(158 84% 52% / 0.15), transparent 70%);
+    --gradient-hero: radial-gradient(circle at 20% 30%, hsl(158 84% 52% / 0.10), transparent 45%), radial-gradient(circle at 80% 70%, hsl(200 90% 55% / 0.08), transparent 45%);
     --gradient-accent: linear-gradient(135deg, hsl(158 84% 52%), hsl(180 84% 55%));
     --gradient-text: linear-gradient(180deg, hsl(0 0% 100%), hsl(0 0% 70%));
     --shadow-glow: 0 0 80px hsl(158 84% 52% / 0.25);
@@ -120,5 +120,14 @@
     background-size: 64px 64px;
     mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, #000 40%, transparent 100%);
   }
+  .bg-noise {
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.5'/></svg>");
+    background-size: 200px 200px;
+  }
+  .section-alt { background-color: hsl(220 20% 5%); }
   .hairline { border-color: hsl(var(--hairline)); }
+  .hover-lift { @apply transition-transform duration-300; }
+  .hover-lift:hover { transform: translateY(-4px); }
+  .hover-glow { @apply transition-all duration-300; }
+  .hover-glow:hover { transform: scale(1.02); box-shadow: 0 0 30px hsl(var(--accent) / 0.35); }
 }
