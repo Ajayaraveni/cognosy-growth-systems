@@ -12,6 +12,12 @@ export const Footer = () => (
         <p className="mt-4 text-sm text-muted-foreground max-w-sm">
           AI Business Growth Systems for ambitious companies worldwide.
         </p>
+        <div className="mt-5 space-y-1 text-sm text-muted-foreground">
+          <div>Global – Remote Operations</div>
+          <div>
+            Email: <a href="mailto:hello@cognosy.com" className="hover:text-foreground">hello@cognosy.com</a>
+          </div>
+        </div>
       </div>
       <div>
         <h4 className="text-sm font-medium mb-4">Company</h4>
