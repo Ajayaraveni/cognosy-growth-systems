@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+
 import logo from "@/assets/cognosy-logo-light.png";
 
 export const Footer = () => (
@@ -10,7 +10,7 @@ export const Footer = () => (
           <img src={logo} alt="Cognosy AI" className="h-20 w-auto" />
         </Link>
         <p className="mt-4 text-sm text-muted-foreground max-w-sm">
-          AI Business Growth Systems for ambitious companies in the US, UK, UAE, Canada and Australia.
+          AI Business Growth Systems for ambitious companies worldwide.
         </p>
       </div>
       <div>
@@ -33,16 +33,10 @@ export const Footer = () => (
         </ul>
       </div>
       <div>
-        <h4 className="text-sm font-medium mb-4">Learn with Cognosy</h4>
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          Explore practical training programs in AI and emerging technologies.
-        </p>
-        <Link
-          to="/academy"
-          className="mt-4 inline-flex items-center gap-1.5 text-sm text-foreground hover:gap-2.5 transition-all"
-        >
-          Cognosy Academy <ArrowRight className="w-3.5 h-3.5" />
-        </Link>
+        <h4 className="text-sm font-medium mb-4">More</h4>
+        <ul className="space-y-2 text-sm text-muted-foreground">
+          <li><a href="#" className="hover:text-foreground">Cognosy Academy</a></li>
+        </ul>
       </div>
     </div>
     <div className="border-t hairline">

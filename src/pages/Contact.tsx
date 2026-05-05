@@ -103,7 +103,7 @@ const Contact = () => {
             <Mail className="w-5 h-5 text-accent mb-3" />
             <div className="text-sm text-muted-foreground">hello@cognosy.ai</div>
             <MapPin className="w-5 h-5 text-accent mb-3 mt-5" />
-            <div className="text-sm text-muted-foreground">Serving USA · UK · UAE · Canada · Australia</div>
+            <div className="text-sm text-muted-foreground">Serving ambitious companies worldwide</div>
           </div>
         </div>
       </section>
