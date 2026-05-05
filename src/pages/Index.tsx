@@ -59,7 +59,7 @@ const Index = () => {
       </section>
 
       {/* WHAT WE DO */}
-      <Section eyebrow="What We Do" title="Five systems. One growth engine." subtitle="We don't sell tools. We design and deploy structured systems that move your business forward.">
+      <Section eyebrow="What We Do" title="Five systems. One growth engine." subtitle="We don't sell tools. We design and deploy structured systems that move your business forward." className="section-alt">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-hairline border hairline rounded-2xl overflow-hidden">
           {services.map((s, i) => {
             const Icon = icons[i];
