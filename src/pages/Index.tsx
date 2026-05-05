@@ -120,7 +120,7 @@ const Index = () => {
       </Section>
 
       {/* WHO IT'S FOR */}
-      <Section eyebrow="Who It's For" title="Built for growing businesses." subtitle="We work with operators who are serious about scaling with structure.">
+      <Section eyebrow="Who It's For" title="Built for growing businesses." subtitle="We work with operators who are serious about scaling with structure." className="section-alt">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
             { i: Building2, t: "Clinics" },
