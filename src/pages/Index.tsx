@@ -45,14 +45,13 @@ const Index = () => {
 
           <div className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-px border hairline rounded-xl overflow-hidden bg-hairline">
             {[
-              { k: "5+", v: "Core service lines" },
-              { k: "5", v: "Global markets" },
-              { k: "10×", v: "Faster operations" },
-              { k: "24/7", v: "Systems running" },
+              "AI-Powered Systems",
+              "10× Operational Efficiency",
+              "24/7 Automated Workflows",
+              "Built for Business Growth",
             ].map((s) => (
-              <div key={s.v} className="bg-background p-6">
-                <div className="font-display text-3xl md:text-4xl font-semibold">{s.k}</div>
-                <div className="mt-1 text-sm text-muted-foreground">{s.v}</div>
+              <div key={s} className="bg-background p-6 flex items-center">
+                <div className="font-display text-xl md:text-2xl font-semibold tracking-tight leading-snug">{s}</div>
               </div>
             ))}
           </div>
