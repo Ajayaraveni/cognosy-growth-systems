@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { z } from "zod";
-import { Calendar, MessageCircle, Mail, MapPin, Send } from "lucide-react";
+import { Calendar, MessageCircle, Mail, MapPin, Send, CheckCircle2 } from "lucide-react";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { toast } from "sonner";
 
 const schema = z.object({
@@ -37,6 +38,8 @@ type FormState = z.infer<typeof schema>;
 const Contact = () => {
   const [form, setForm] = useState<FormState>({ name: "", email: "", business: "", message: "" });
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
+  const [submittedName, setSubmittedName] = useState<string>("");
+  const [confirmOpen, setConfirmOpen] = useState(false);
 
   const update = (field: keyof FormState, value: string) => {
     setForm((f) => ({ ...f, [field]: value }));
@@ -60,7 +63,9 @@ const Contact = () => {
     const subject = `New inquiry from ${result.data.name} (${result.data.business})`;
     const body = `Name: ${result.data.name}\nEmail: ${result.data.email}\nBusiness Type: ${result.data.business}\n\nMessage:\n${result.data.message}`;
     window.location.href = `mailto:hello@cognosy.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    toast.success("Opening your email app to send to hello@cognosy.com.");
+    setSubmittedName(result.data.name);
+    setConfirmOpen(true);
+    toast.success("Message ready — your email app should now be open.");
     setForm({ name: "", email: "", business: "", message: "" });
   };
 
@@ -138,6 +143,27 @@ const Contact = () => {
           </div>
         </div>
       </section>
+
+      <Dialog open={confirmOpen} onOpenChange={setConfirmOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <div className="mx-auto w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mb-2">
+              <CheckCircle2 className="w-6 h-6 text-accent" aria-hidden="true" />
+            </div>
+            <DialogTitle className="text-center font-display text-2xl">
+              Thank you{submittedName ? `, ${submittedName}` : ""}!
+            </DialogTitle>
+            <DialogDescription className="text-center">
+              Your message is ready in your email app, addressed to{" "}
+              <span className="text-foreground font-medium">hello@cognosy.com</span>. Hit send and we'll
+              respond within one business day.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="sm:justify-center">
+            <Button variant="hero" onClick={() => setConfirmOpen(false)}>Close</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </Layout>
   );
 };
