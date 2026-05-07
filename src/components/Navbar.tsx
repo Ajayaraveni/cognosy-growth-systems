@@ -13,8 +13,8 @@ const links = [
 ];
 
 const socials = [
-  { href: "https://instagram.com", label: "Instagram", Icon: Instagram },
-  { href: "https://youtube.com", label: "YouTube", Icon: Youtube },
+  { href: "https://www.instagram.com/cognosy_ai_/", label: "Instagram", Icon: Instagram },
+  { href: "https://www.youtube.com/@CognosyAI", label: "YouTube", Icon: Youtube },
   { href: "https://twitter.com", label: "Twitter", Icon: Twitter },
 ];
 

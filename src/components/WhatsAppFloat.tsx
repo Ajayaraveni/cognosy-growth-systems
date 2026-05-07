@@ -1,11 +1,8 @@
-const MESSAGE = "Hi, I'm interested in AI growth systems for my business.";
-const PHONE = "919885529998";
-
 export const WhatsAppFloat = () => (
   <a
-    href={`https://wa.me/${PHONE}?text=${encodeURIComponent(MESSAGE)}`}
+    href="https://wa.me/919885529998?text=Hi%20Cognosy%2C%20I%E2%80%99m%20interested%20in%20AI%20automation%20for%20my%20business.%20Can%20we%20discuss%3F"
     target="_blank"
-    rel="noreferrer"
+    rel="noopener noreferrer"
     aria-label="Chat on WhatsApp"
     className="fixed bottom-6 right-6 z-50 h-14 w-14 rounded-full border hairline bg-surface/90 backdrop-blur flex items-center justify-center text-foreground/90 hover:text-accent hover:border-accent/50 hover:scale-105 hover:shadow-[0_0_24px_hsl(var(--accent)/0.35)] transition-all duration-300 shadow-card"
   >
