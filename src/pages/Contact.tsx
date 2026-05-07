@@ -9,23 +9,51 @@ import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 
 const schema = z.object({
-  name: z.string().trim().min(1, "Name is required").max(100),
-  email: z.string().trim().email("Invalid email").max(255),
-  business: z.string().trim().min(1, "Business type required").max(100),
-  message: z.string().trim().min(1, "Message required").max(1000),
+  name: z
+    .string()
+    .trim()
+    .min(1, "Please enter your name")
+    .max(100, "Name must be under 100 characters"),
+  email: z
+    .string()
+    .trim()
+    .min(1, "Please enter your email")
+    .email("Please enter a valid email address")
+    .max(255, "Email must be under 255 characters"),
+  business: z
+    .string()
+    .trim()
+    .min(1, "Please tell us your business type")
+    .max(100, "Business type must be under 100 characters"),
+  message: z
+    .string()
+    .trim()
+    .min(1, "Please write a short message")
+    .max(1000, "Message must be under 1000 characters"),
 });
 
+type FormState = z.infer<typeof schema>;
+
 const Contact = () => {
-  const [form, setForm] = useState({ name: "", email: "", business: "", message: "" });
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [form, setForm] = useState<FormState>({ name: "", email: "", business: "", message: "" });
+  const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
+
+  const update = (field: keyof FormState, value: string) => {
+    setForm((f) => ({ ...f, [field]: value }));
+    if (errors[field]) setErrors((e) => ({ ...e, [field]: undefined }));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const result = schema.safeParse(form);
     if (!result.success) {
-      const fe: Record<string, string> = {};
-      result.error.issues.forEach((i) => (fe[i.path[0] as string] = i.message));
+      const fe: Partial<Record<keyof FormState, string>> = {};
+      result.error.issues.forEach((i) => {
+        const key = i.path[0] as keyof FormState;
+        if (!fe[key]) fe[key] = i.message;
+      });
       setErrors(fe);
+      toast.error("Please fix the highlighted fields and try again.");
       return;
     }
     setErrors({});
@@ -49,28 +77,28 @@ const Contact = () => {
       </section>
 
       <section className="max-w-7xl mx-auto px-6 lg:px-8 pb-24 grid lg:grid-cols-5 gap-8">
-        <form onSubmit={handleSubmit} className="lg:col-span-3 p-8 md:p-10 rounded-2xl border hairline bg-surface/40 space-y-6">
+        <form onSubmit={handleSubmit} noValidate className="lg:col-span-3 p-8 md:p-10 rounded-2xl border hairline bg-surface/40 space-y-6">
           <div className="grid sm:grid-cols-2 gap-5">
             <div>
-              <Label htmlFor="name">Name</Label>
-              <Input id="name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="mt-2 bg-background" maxLength={100} />
-              {errors.name && <p className="text-xs text-destructive mt-1">{errors.name}</p>}
+              <Label htmlFor="name">Name <span aria-hidden="true" className="text-accent">*</span></Label>
+              <Input id="name" required aria-required="true" aria-invalid={!!errors.name} aria-describedby={errors.name ? "name-error" : undefined} value={form.name} onChange={(e) => update("name", e.target.value)} className="mt-2 bg-background" maxLength={100} />
+              {errors.name && <p id="name-error" role="alert" className="text-xs text-destructive mt-1">{errors.name}</p>}
             </div>
             <div>
-              <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="mt-2 bg-background" maxLength={255} />
-              {errors.email && <p className="text-xs text-destructive mt-1">{errors.email}</p>}
+              <Label htmlFor="email">Email <span aria-hidden="true" className="text-accent">*</span></Label>
+              <Input id="email" type="email" required aria-required="true" aria-invalid={!!errors.email} aria-describedby={errors.email ? "email-error" : undefined} value={form.email} onChange={(e) => update("email", e.target.value)} className="mt-2 bg-background" maxLength={255} />
+              {errors.email && <p id="email-error" role="alert" className="text-xs text-destructive mt-1">{errors.email}</p>}
             </div>
           </div>
           <div>
-            <Label htmlFor="business">Business Type</Label>
-            <Input id="business" placeholder="Clinic, Real Estate, Agency, etc." value={form.business} onChange={(e) => setForm({ ...form, business: e.target.value })} className="mt-2 bg-background" maxLength={100} />
-            {errors.business && <p className="text-xs text-destructive mt-1">{errors.business}</p>}
+            <Label htmlFor="business">Business Type <span aria-hidden="true" className="text-accent">*</span></Label>
+            <Input id="business" required aria-required="true" aria-invalid={!!errors.business} aria-describedby={errors.business ? "business-error" : undefined} placeholder="Clinic, Real Estate, Agency, etc." value={form.business} onChange={(e) => update("business", e.target.value)} className="mt-2 bg-background" maxLength={100} />
+            {errors.business && <p id="business-error" role="alert" className="text-xs text-destructive mt-1">{errors.business}</p>}
           </div>
           <div>
-            <Label htmlFor="message">Message</Label>
-            <Textarea id="message" rows={6} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} className="mt-2 bg-background" maxLength={1000} />
-            {errors.message && <p className="text-xs text-destructive mt-1">{errors.message}</p>}
+            <Label htmlFor="message">Message <span aria-hidden="true" className="text-accent">*</span></Label>
+            <Textarea id="message" required aria-required="true" aria-invalid={!!errors.message} aria-describedby={errors.message ? "message-error" : undefined} rows={6} value={form.message} onChange={(e) => update("message", e.target.value)} className="mt-2 bg-background" maxLength={1000} />
+            {errors.message && <p id="message-error" role="alert" className="text-xs text-destructive mt-1">{errors.message}</p>}
           </div>
           <Button type="submit" variant="hero" size="lg" className="w-full sm:w-auto">
             Send Message <Send />
