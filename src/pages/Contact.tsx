@@ -57,7 +57,10 @@ const Contact = () => {
       return;
     }
     setErrors({});
-    toast.success("Message sent. We'll be in touch within 24 hours.");
+    const subject = `New inquiry from ${result.data.name} (${result.data.business})`;
+    const body = `Name: ${result.data.name}\nEmail: ${result.data.email}\nBusiness Type: ${result.data.business}\n\nMessage:\n${result.data.message}`;
+    window.location.href = `mailto:hello@cognosy.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    toast.success("Opening your email app to send to hello@cognosy.com.");
     setForm({ name: "", email: "", business: "", message: "" });
   };
 
