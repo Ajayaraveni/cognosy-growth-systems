@@ -38,6 +38,8 @@ type FormState = z.infer<typeof schema>;
 const Contact = () => {
   const [form, setForm] = useState<FormState>({ name: "", email: "", business: "", message: "" });
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
+  const [submittedName, setSubmittedName] = useState<string>("");
+  const [confirmOpen, setConfirmOpen] = useState(false);
 
   const update = (field: keyof FormState, value: string) => {
     setForm((f) => ({ ...f, [field]: value }));
@@ -61,7 +63,9 @@ const Contact = () => {
     const subject = `New inquiry from ${result.data.name} (${result.data.business})`;
     const body = `Name: ${result.data.name}\nEmail: ${result.data.email}\nBusiness Type: ${result.data.business}\n\nMessage:\n${result.data.message}`;
     window.location.href = `mailto:hello@cognosy.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    toast.success("Opening your email app to send to hello@cognosy.com.");
+    setSubmittedName(result.data.name);
+    setConfirmOpen(true);
+    toast.success("Message ready — your email app should now be open.");
     setForm({ name: "", email: "", business: "", message: "" });
   };
 
