@@ -143,6 +143,27 @@ const Contact = () => {
           </div>
         </div>
       </section>
+
+      <Dialog open={confirmOpen} onOpenChange={setConfirmOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <div className="mx-auto w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mb-2">
+              <CheckCircle2 className="w-6 h-6 text-accent" aria-hidden="true" />
+            </div>
+            <DialogTitle className="text-center font-display text-2xl">
+              Thank you{submittedName ? `, ${submittedName}` : ""}!
+            </DialogTitle>
+            <DialogDescription className="text-center">
+              Your message is ready in your email app, addressed to{" "}
+              <span className="text-foreground font-medium">hello@cognosy.com</span>. Hit send and we'll
+              respond within one business day.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="sm:justify-center">
+            <Button variant="hero" onClick={() => setConfirmOpen(false)}>Close</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </Layout>
   );
 };
