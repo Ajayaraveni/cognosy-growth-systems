@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { z } from "zod";
-import { Calendar, MessageCircle, Mail, MapPin, Send } from "lucide-react";
+import { Calendar, MessageCircle, Mail, MapPin, Send, CheckCircle2 } from "lucide-react";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { toast } from "sonner";
 
 const schema = z.object({
