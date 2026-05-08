@@ -4,6 +4,7 @@ import { ArrowRight, Workflow, Zap, Search, Sparkles, GraduationCap, Building2, 
 import { Layout } from "@/components/Layout";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/button";
+import { ContactDialog } from "@/components/ContactDialog";
 import { services } from "@/data/services";
 
 const icons = [Workflow, Zap, Search, Sparkles, GraduationCap];
@@ -34,9 +35,13 @@ const Index = () => {
               From automation to visibility and authority — we build systems that drive real growth.
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
-              <Button asChild variant="hero" size="lg">
-                <Link to="/contact">Book Strategy Call <ArrowRight /></Link>
-              </Button>
+              <ContactDialog
+                trigger={
+                  <Button variant="hero" size="lg">
+                    Book Strategy Call <ArrowRight />
+                  </Button>
+                }
+              />
               <Button asChild variant="soft" size="lg">
                 <Link to="/services">View Services</Link>
               </Button>
@@ -88,9 +93,11 @@ const Index = () => {
               <div className="font-display text-xl font-semibold">Need a custom system?</div>
               <p className="mt-2 text-sm text-muted-foreground">We design bespoke growth systems for businesses with unique needs.</p>
             </div>
-            <Button asChild variant="hero" size="sm" className="mt-6 w-fit">
-              <Link to="/contact">Talk to us</Link>
-            </Button>
+            <ContactDialog
+              trigger={
+                <Button variant="hero" size="sm" className="mt-6 w-fit">Talk to us</Button>
+              }
+            />
           </div>
         </div>
       </Section>
@@ -165,9 +172,13 @@ const Index = () => {
               <span className="text-gradient">Start running on systems.</span>
             </h2>
             <div className="mt-10 flex flex-wrap justify-center gap-3">
-              <Button asChild variant="hero" size="lg">
-                <Link to="/contact">Book Strategy Call <ArrowRight /></Link>
-              </Button>
+              <ContactDialog
+                trigger={
+                  <Button variant="hero" size="lg">
+                    Book Strategy Call <ArrowRight />
+                  </Button>
+                }
+              />
               <Button asChild variant="soft" size="lg">
                 <Link to="/services">View Services</Link>
               </Button>

@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
 import { ArrowRight, Compass, Layers, Target } from "lucide-react";
 import { Layout } from "@/components/Layout";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/button";
+import { ContactDialog } from "@/components/ContactDialog";
 
 const About = () => (
   <Layout>
@@ -56,9 +56,12 @@ const About = () => (
         </p>
       </div>
       <div className="mt-12">
-        <Button asChild variant="hero" size="lg">
-          <Link to="/contact">Work With Us <ArrowRight /></Link>
-        </Button>
+        <ContactDialog
+          title="Work With Us"
+          trigger={
+            <Button variant="hero" size="lg">Work With Us <ArrowRight /></Button>
+          }
+        />
       </div>
     </Section>
   </Layout>

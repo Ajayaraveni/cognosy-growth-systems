@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
+import { ContactDialog } from "@/components/ContactDialog";
 import { services } from "@/data/services";
 
 const Services = () => (
@@ -55,9 +55,11 @@ const Services = () => (
         <div className="relative">
           <h2 className="font-display text-4xl md:text-5xl font-semibold tracking-tight">Not sure which system you need?</h2>
           <p className="mt-4 text-muted-foreground max-w-xl mx-auto">Book a strategy call. We'll map your business and tell you exactly where to start.</p>
-          <Button asChild variant="hero" size="lg" className="mt-8">
-            <Link to="/contact">Book Strategy Call <ArrowRight /></Link>
-          </Button>
+          <ContactDialog
+            trigger={
+              <Button variant="hero" size="lg" className="mt-8">Book Strategy Call <ArrowRight /></Button>
+            }
+          />
         </div>
       </div>
     </section>
