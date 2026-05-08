@@ -1,36 +1,20 @@
 import { useState } from "react";
 import { z } from "zod";
-import { Calendar, MessageCircle, Mail, MapPin, Send, CheckCircle2 } from "lucide-react";
+import { Calendar, Send, CheckCircle2, ArrowRight } from "lucide-react";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
+import { ContactDialog } from "@/components/ContactDialog";
 import { toast } from "sonner";
 
 const schema = z.object({
-  name: z
-    .string()
-    .trim()
-    .min(1, "Please enter your name")
-    .max(100, "Name must be under 100 characters"),
-  email: z
-    .string()
-    .trim()
-    .min(1, "Please enter your email")
-    .email("Please enter a valid email address")
-    .max(255, "Email must be under 255 characters"),
-  business: z
-    .string()
-    .trim()
-    .min(1, "Please tell us your business type")
-    .max(100, "Business type must be under 100 characters"),
-  message: z
-    .string()
-    .trim()
-    .min(1, "Please write a short message")
-    .max(1000, "Message must be under 1000 characters"),
+  name: z.string().trim().min(1, "Please enter your name").max(100, "Name must be under 100 characters"),
+  email: z.string().trim().min(1, "Please enter your email").email("Please enter a valid email address").max(255),
+  business: z.string().trim().min(1, "Please tell us your business type").max(100),
+  message: z.string().trim().min(1, "Please write a short message").max(1000),
 });
 
 type FormState = z.infer<typeof schema>;
@@ -85,61 +69,48 @@ const Contact = () => {
       </section>
 
       <section className="max-w-7xl mx-auto px-6 lg:px-8 pb-24 grid lg:grid-cols-5 gap-8">
-        <form onSubmit={handleSubmit} noValidate className="lg:col-span-3 p-8 md:p-10 rounded-2xl border hairline bg-surface/40 space-y-6">
+        <form onSubmit={handleSubmit} noValidate className="lg:col-span-3 p-8 md:p-12 rounded-2xl border hairline bg-surface/30 space-y-6">
           <div className="grid sm:grid-cols-2 gap-5">
             <div>
-              <Label htmlFor="name">Name <span aria-hidden="true" className="text-accent">*</span></Label>
-              <Input id="name" required aria-required="true" aria-invalid={!!errors.name} aria-describedby={errors.name ? "name-error" : undefined} value={form.name} onChange={(e) => update("name", e.target.value)} className="mt-2 bg-background" maxLength={100} />
-              {errors.name && <p id="name-error" role="alert" className="text-xs text-destructive mt-1">{errors.name}</p>}
+              <Label htmlFor="name" className="text-xs uppercase tracking-wider text-muted-foreground">Name</Label>
+              <Input id="name" required aria-required="true" aria-invalid={!!errors.name} value={form.name} onChange={(e) => update("name", e.target.value)} className="mt-2 bg-background h-11" maxLength={100} />
+              {errors.name && <p role="alert" className="text-xs text-destructive mt-1.5">{errors.name}</p>}
             </div>
             <div>
-              <Label htmlFor="email">Email <span aria-hidden="true" className="text-accent">*</span></Label>
-              <Input id="email" type="email" required aria-required="true" aria-invalid={!!errors.email} aria-describedby={errors.email ? "email-error" : undefined} value={form.email} onChange={(e) => update("email", e.target.value)} className="mt-2 bg-background" maxLength={255} />
-              {errors.email && <p id="email-error" role="alert" className="text-xs text-destructive mt-1">{errors.email}</p>}
+              <Label htmlFor="email" className="text-xs uppercase tracking-wider text-muted-foreground">Email</Label>
+              <Input id="email" type="email" required aria-required="true" aria-invalid={!!errors.email} value={form.email} onChange={(e) => update("email", e.target.value)} className="mt-2 bg-background h-11" maxLength={255} />
+              {errors.email && <p role="alert" className="text-xs text-destructive mt-1.5">{errors.email}</p>}
             </div>
           </div>
           <div>
-            <Label htmlFor="business">Business Type <span aria-hidden="true" className="text-accent">*</span></Label>
-            <Input id="business" required aria-required="true" aria-invalid={!!errors.business} aria-describedby={errors.business ? "business-error" : undefined} placeholder="Clinic, Real Estate, Agency, etc." value={form.business} onChange={(e) => update("business", e.target.value)} className="mt-2 bg-background" maxLength={100} />
-            {errors.business && <p id="business-error" role="alert" className="text-xs text-destructive mt-1">{errors.business}</p>}
+            <Label htmlFor="business" className="text-xs uppercase tracking-wider text-muted-foreground">Business Type</Label>
+            <Input id="business" required aria-required="true" aria-invalid={!!errors.business} placeholder="Clinic, Real Estate, Agency, etc." value={form.business} onChange={(e) => update("business", e.target.value)} className="mt-2 bg-background h-11" maxLength={100} />
+            {errors.business && <p role="alert" className="text-xs text-destructive mt-1.5">{errors.business}</p>}
           </div>
           <div>
-            <Label htmlFor="message">Message <span aria-hidden="true" className="text-accent">*</span></Label>
-            <Textarea id="message" required aria-required="true" aria-invalid={!!errors.message} aria-describedby={errors.message ? "message-error" : undefined} rows={6} value={form.message} onChange={(e) => update("message", e.target.value)} className="mt-2 bg-background" maxLength={1000} />
-            {errors.message && <p id="message-error" role="alert" className="text-xs text-destructive mt-1">{errors.message}</p>}
+            <Label htmlFor="message" className="text-xs uppercase tracking-wider text-muted-foreground">Message</Label>
+            <Textarea id="message" required aria-required="true" aria-invalid={!!errors.message} rows={6} value={form.message} onChange={(e) => update("message", e.target.value)} className="mt-2 bg-background" maxLength={1000} />
+            {errors.message && <p role="alert" className="text-xs text-destructive mt-1.5">{errors.message}</p>}
           </div>
           <Button type="submit" variant="hero" size="lg" className="w-full sm:w-auto">
             Send Message <Send />
           </Button>
         </form>
 
-        <div className="lg:col-span-2 space-y-4">
-          <a
-            href="https://wa.me/10000000000"
-            target="_blank"
-            rel="noreferrer"
-            className="block p-6 rounded-2xl border hairline bg-surface/40 hover:border-accent/40 transition-colors"
-          >
-            <MessageCircle className="w-6 h-6 text-accent mb-4" />
-            <div className="font-display text-lg font-semibold">Chat on WhatsApp</div>
-            <p className="text-sm text-muted-foreground mt-1">Quick questions? Get a reply in minutes.</p>
-          </a>
-          <a
-            href="https://cal.com"
-            target="_blank"
-            rel="noreferrer"
-            className="block p-6 rounded-2xl border hairline bg-surface/40 hover:border-accent/40 transition-colors"
-          >
-            <Calendar className="w-6 h-6 text-accent mb-4" />
-            <div className="font-display text-lg font-semibold">Book a Strategy Call</div>
-            <p className="text-sm text-muted-foreground mt-1">30-minute call. We'll map your business and outline next steps.</p>
-            <div className="mt-4 inline-flex items-center gap-2 text-xs text-accent">Pick a slot →</div>
-          </a>
-          <div className="p-6 rounded-2xl border hairline bg-surface/40">
-            <Mail className="w-5 h-5 text-accent mb-3" />
-            <div className="text-sm text-muted-foreground">hello@cognosy.ai</div>
-            <MapPin className="w-5 h-5 text-accent mb-3 mt-5" />
-            <div className="text-sm text-muted-foreground">Serving ambitious companies worldwide</div>
+        <div className="lg:col-span-2">
+          <div className="p-8 rounded-2xl border hairline bg-surface/30 h-full flex flex-col">
+            <Calendar className="w-6 h-6 text-accent mb-5" />
+            <div className="font-display text-2xl font-semibold tracking-tight">Book a Strategy Call</div>
+            <p className="text-sm text-muted-foreground mt-3 leading-relaxed flex-1">
+              30-minute call. We'll map your business, identify the highest-leverage systems, and outline a clear next step.
+            </p>
+            <ContactDialog
+              trigger={
+                <Button variant="hero" size="lg" className="mt-8 w-full">
+                  Book Strategy Call <ArrowRight />
+                </Button>
+              }
+            />
           </div>
         </div>
       </section>

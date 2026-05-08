@@ -13,7 +13,7 @@ export const Footer = () => (
           AI Business Growth Systems for ambitious companies worldwide.
         </p>
         <div className="mt-5 space-y-1 text-sm text-muted-foreground">
-          <div>Global – Remote Operations</div>
+          <div>Global AI Growth Partner</div>
           <div>
             Email: <a href="mailto:hello@cognosy.com" className="hover:text-foreground">hello@cognosy.com</a>
           </div>
@@ -24,7 +24,6 @@ export const Footer = () => (
         <ul className="space-y-2 text-sm text-muted-foreground">
           <li><Link to="/about" className="hover:text-foreground">About</Link></li>
           <li><Link to="/services" className="hover:text-foreground">Services</Link></li>
-          <li><Link to="/blog" className="hover:text-foreground">Blog</Link></li>
           <li><Link to="/contact" className="hover:text-foreground">Contact</Link></li>
         </ul>
       </div>
@@ -41,7 +40,7 @@ export const Footer = () => (
       <div>
         <h4 className="text-sm font-medium mb-4">More</h4>
         <ul className="space-y-2 text-sm text-muted-foreground">
-          <li><a href="#" className="hover:text-foreground">Cognosy Academy</a></li>
+          <li><a href="https://academy.cognosy.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">Cognosy Academy</a></li>
         </ul>
       </div>
     </div>
