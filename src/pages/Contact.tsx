@@ -30,7 +30,9 @@ const Contact = () => {
     if (errors[field]) setErrors((e) => ({ ...e, [field]: undefined }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const result = schema.safeParse(form);
     if (!result.success) {
@@ -44,13 +46,32 @@ const Contact = () => {
       return;
     }
     setErrors({});
-    const subject = `New inquiry from ${result.data.name} (${result.data.business})`;
-    const body = `Name: ${result.data.name}\nEmail: ${result.data.email}\nBusiness Type: ${result.data.business}\n\nMessage:\n${result.data.message}`;
-    window.location.href = `mailto:hello@cognosy.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setSubmittedName(result.data.name);
-    setConfirmOpen(true);
-    toast.success("Message ready — your email app should now be open.");
-    setForm({ name: "", email: "", business: "", message: "" });
+    setSubmitting(true);
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: "5324f703-cd62-4fc4-80a9-84f637aa8345",
+          name: result.data.name,
+          email: result.data.email,
+          business_type: result.data.business,
+          message: result.data.message,
+          subject: `New inquiry from ${result.data.name} (${result.data.business})`,
+          from_name: "Cognosy Website",
+        }),
+      });
+      const data = await res.json();
+      if (!data.success) throw new Error(data.message || "Submission failed");
+      setSubmittedName(result.data.name);
+      setConfirmOpen(true);
+      toast.success("Message sent successfully.");
+      setForm({ name: "", email: "", business: "", message: "" });
+    } catch {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -92,8 +113,8 @@ const Contact = () => {
             <Textarea id="message" required aria-required="true" aria-invalid={!!errors.message} rows={6} value={form.message} onChange={(e) => update("message", e.target.value)} className="mt-2 bg-background" maxLength={1000} />
             {errors.message && <p role="alert" className="text-xs text-destructive mt-1.5">{errors.message}</p>}
           </div>
-          <Button type="submit" variant="hero" size="lg" className="w-full sm:w-auto">
-            Send Message <Send />
+          <Button type="submit" variant="hero" size="lg" className="w-full sm:w-auto" disabled={submitting}>
+            {submitting ? "Sending..." : <>Send Message <Send /></>}
           </Button>
         </form>
 
@@ -125,9 +146,9 @@ const Contact = () => {
               Thank you{submittedName ? `, ${submittedName}` : ""}!
             </DialogTitle>
             <DialogDescription className="text-center">
-              Your message is ready in your email app, addressed to{" "}
-              <span className="text-foreground font-medium">hello@cognosy.com</span>. Hit send and we'll
-              respond within one business day.
+              Your message has been sent to{" "}
+              <span className="text-foreground font-medium">hello@cognosy.com</span>. We'll respond
+              within one business day.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter className="sm:justify-center">
