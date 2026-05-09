@@ -34,7 +34,9 @@ export const ContactDialog = ({ trigger, title = "Book a Strategy Call", descrip
     if (errors[k]) setErrors((e) => ({ ...e, [k]: undefined }));
   };
 
-  const submit = (e: React.FormEvent) => {
+  const [submitting, setSubmitting] = useState(false);
+
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     const r = schema.safeParse(form);
     if (!r.success) {
@@ -48,14 +50,33 @@ export const ContactDialog = ({ trigger, title = "Book a Strategy Call", descrip
       return;
     }
     setErrors({});
-    const subject = `New inquiry from ${r.data.name} (${r.data.business})`;
-    const body = `Name: ${r.data.name}\nEmail: ${r.data.email}\nBusiness Type: ${r.data.business}\n\nMessage:\n${r.data.message}`;
-    window.location.href = `mailto:hello@cognosy.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setSubmittedName(r.data.name);
-    setForm({ name: "", email: "", business: "", message: "" });
-    setOpen(false);
-    setConfirm(true);
-    toast.success("Message ready — your email app should now be open.");
+    setSubmitting(true);
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: "5324f703-cd62-4fc4-80a9-84f637aa8345",
+          name: r.data.name,
+          email: r.data.email,
+          business_type: r.data.business,
+          message: r.data.message,
+          subject: `New inquiry from ${r.data.name} (${r.data.business})`,
+          from_name: "Cognosy Website",
+        }),
+      });
+      const data = await res.json();
+      if (!data.success) throw new Error(data.message || "Submission failed");
+      setSubmittedName(r.data.name);
+      setForm({ name: "", email: "", business: "", message: "" });
+      setOpen(false);
+      setConfirm(true);
+      toast.success("Message sent successfully.");
+    } catch (err) {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
