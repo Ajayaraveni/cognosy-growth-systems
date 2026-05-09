@@ -113,8 +113,8 @@ const Contact = () => {
             <Textarea id="message" required aria-required="true" aria-invalid={!!errors.message} rows={6} value={form.message} onChange={(e) => update("message", e.target.value)} className="mt-2 bg-background" maxLength={1000} />
             {errors.message && <p role="alert" className="text-xs text-destructive mt-1.5">{errors.message}</p>}
           </div>
-          <Button type="submit" variant="hero" size="lg" className="w-full sm:w-auto">
-            Send Message <Send />
+          <Button type="submit" variant="hero" size="lg" className="w-full sm:w-auto" disabled={submitting}>
+            {submitting ? "Sending..." : <>Send Message <Send /></>}
           </Button>
         </form>
 
