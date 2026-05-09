@@ -111,8 +111,8 @@ export const ContactDialog = ({ trigger, title = "Book a Strategy Call", descrip
               <Textarea id="cd-message" rows={4} value={form.message} onChange={(e) => update("message", e.target.value)} maxLength={1000} aria-invalid={!!errors.message} className="mt-1.5" />
               {errors.message && <p className="text-xs text-destructive mt-1">{errors.message}</p>}
             </div>
-            <Button type="submit" variant="hero" size="lg" className="w-full">
-              Send Message <Send />
+            <Button type="submit" variant="hero" size="lg" className="w-full" disabled={submitting}>
+              {submitting ? "Sending..." : <>Send Message <Send /></>}
             </Button>
           </form>
         </DialogContent>
