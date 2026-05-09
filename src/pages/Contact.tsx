@@ -146,9 +146,9 @@ const Contact = () => {
               Thank you{submittedName ? `, ${submittedName}` : ""}!
             </DialogTitle>
             <DialogDescription className="text-center">
-              Your message is ready in your email app, addressed to{" "}
-              <span className="text-foreground font-medium">hello@cognosy.com</span>. Hit send and we'll
-              respond within one business day.
+              Your message has been sent to{" "}
+              <span className="text-foreground font-medium">hello@cognosy.com</span>. We'll respond
+              within one business day.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter className="sm:justify-center">
