@@ -17,6 +17,7 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
         hero: "relative bg-gradient-to-r from-[hsl(217_91%_60%)] via-[hsl(258_90%_66%)] to-[hsl(190_95%_55%)] bg-[length:200%_100%] text-white shadow-[0_10px_40px_-10px_hsl(217_91%_60%/0.6)] hover:bg-[position:100%_0] hover:shadow-[0_20px_60px_-15px_hsl(258_90%_66%/0.7)] hover:-translate-y-0.5 transition-all duration-500",
         soft: "glass text-foreground hover:bg-secondary/60 hover:-translate-y-0.5 transition-all duration-300",
+      },
       size: {
         default: "h-10 px-4 py-2",
         sm: "h-9 rounded-md px-3",
