@@ -83,7 +83,7 @@ export const ContactDialog = ({ trigger, title = "Book a Strategy Call", descrip
     <>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>{trigger}</DialogTrigger>
-        <DialogContent className="sm:max-w-lg bg-background border hairline">
+        <DialogContent className="sm:max-w-lg glass-strong border-hairline">
           <DialogHeader>
             <DialogTitle className="font-display text-2xl tracking-tight">{title}</DialogTitle>
             <DialogDescription>{description}</DialogDescription>
@@ -91,27 +91,27 @@ export const ContactDialog = ({ trigger, title = "Book a Strategy Call", descrip
           <form onSubmit={submit} noValidate className="space-y-4 pt-2">
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
-                <Label htmlFor="cd-name" className="text-xs text-muted-foreground">Name</Label>
-                <Input id="cd-name" value={form.name} onChange={(e) => update("name", e.target.value)} maxLength={100} aria-invalid={!!errors.name} className="mt-1.5" />
+                <Label htmlFor="cd-name" className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Name</Label>
+                <Input id="cd-name" value={form.name} onChange={(e) => update("name", e.target.value)} maxLength={100} aria-invalid={!!errors.name} className="mt-1.5 bg-background/40 focus-visible:ring-accent" />
                 {errors.name && <p className="text-xs text-destructive mt-1">{errors.name}</p>}
               </div>
               <div>
-                <Label htmlFor="cd-email" className="text-xs text-muted-foreground">Email</Label>
-                <Input id="cd-email" type="email" value={form.email} onChange={(e) => update("email", e.target.value)} maxLength={255} aria-invalid={!!errors.email} className="mt-1.5" />
+                <Label htmlFor="cd-email" className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Email</Label>
+                <Input id="cd-email" type="email" value={form.email} onChange={(e) => update("email", e.target.value)} maxLength={255} aria-invalid={!!errors.email} className="mt-1.5 bg-background/40 focus-visible:ring-accent" />
                 {errors.email && <p className="text-xs text-destructive mt-1">{errors.email}</p>}
               </div>
             </div>
             <div>
-              <Label htmlFor="cd-business" className="text-xs text-muted-foreground">Business Type</Label>
-              <Input id="cd-business" placeholder="Clinic, Real Estate, Agency, etc." value={form.business} onChange={(e) => update("business", e.target.value)} maxLength={100} aria-invalid={!!errors.business} className="mt-1.5" />
+              <Label htmlFor="cd-business" className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Business Type</Label>
+              <Input id="cd-business" placeholder="Clinic, Real Estate, Agency, etc." value={form.business} onChange={(e) => update("business", e.target.value)} maxLength={100} aria-invalid={!!errors.business} className="mt-1.5 bg-background/40 focus-visible:ring-accent" />
               {errors.business && <p className="text-xs text-destructive mt-1">{errors.business}</p>}
             </div>
             <div>
-              <Label htmlFor="cd-message" className="text-xs text-muted-foreground">Message</Label>
-              <Textarea id="cd-message" rows={4} value={form.message} onChange={(e) => update("message", e.target.value)} maxLength={1000} aria-invalid={!!errors.message} className="mt-1.5" />
+              <Label htmlFor="cd-message" className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Message</Label>
+              <Textarea id="cd-message" rows={4} value={form.message} onChange={(e) => update("message", e.target.value)} maxLength={1000} aria-invalid={!!errors.message} className="mt-1.5 bg-background/40 focus-visible:ring-accent" />
               {errors.message && <p className="text-xs text-destructive mt-1">{errors.message}</p>}
             </div>
-            <Button type="submit" variant="hero" size="lg" className="w-full" disabled={submitting}>
+            <Button type="submit" variant="hero" size="lg" className="w-full rounded-full" disabled={submitting}>
               {submitting ? "Sending..." : <>Send Message <Send /></>}
             </Button>
           </form>

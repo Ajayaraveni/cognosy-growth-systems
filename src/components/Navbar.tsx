@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Menu, X, Instagram, Youtube, Twitter } from "lucide-react";
+import { Menu, X, Instagram, Youtube, Twitter, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ContactDialog } from "@/components/ContactDialog";
 import logo from "@/assets/cognosy-logo-light.png";
 
 const links = [
@@ -8,7 +10,6 @@ const links = [
   { to: "/about", label: "About" },
   { to: "/services", label: "Services" },
   { to: "/contact", label: "Contact" },
-  
 ];
 
 const socials = [
@@ -33,68 +34,52 @@ export const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-background/70 backdrop-blur-xl border-b hairline" : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? "py-3"
+          : "py-5"
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-6 lg:px-8 h-28 flex items-center justify-between">
-        <Link to="/" className="flex items-center" aria-label="Cognosy AI home">
-          <img src={logo} alt="Cognosy AI" className="h-24 w-auto" />
-        </Link>
+      <div className="max-w-7xl mx-auto px-4 lg:px-6">
+        <nav
+          className={`flex items-center justify-between rounded-2xl transition-all duration-500 px-4 lg:px-6 ${
+            scrolled
+              ? "glass-strong h-16 shadow-[0_10px_40px_-20px_hsl(0_0%_0%/0.6)]"
+              : "bg-transparent h-20"
+          }`}
+        >
+          <Link to="/" className="flex items-center gap-3" aria-label="Cognosy AI home">
+            <img src={logo} alt="Cognosy AI" className={`w-auto transition-all duration-500 ${scrolled ? "h-12" : "h-16"}`} />
+          </Link>
 
-        <div className="hidden md:flex items-center gap-1">
-          {links.map((l) => (
-            <NavLink
-              key={l.to}
-              to={l.to}
-              end={l.to === "/"}
-              className={({ isActive }) =>
-                `px-4 py-2 text-sm rounded-md transition-colors ${
-                  isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"
-                }`
-              }
-            >
-              {l.label}
-            </NavLink>
-          ))}
-        </div>
-
-        <div className="hidden md:flex items-center gap-2">
-          {socials.map(({ href, label, Icon }) => (
-            <a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={label}
-              className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
-            >
-              <Icon className="h-5 w-5" />
-            </a>
-          ))}
-        </div>
-
-        <button className="md:hidden text-foreground" onClick={() => setOpen(!open)} aria-label="menu">
-          {open ? <X /> : <Menu />}
-        </button>
-      </nav>
-
-      {open && (
-        <div className="md:hidden border-t hairline bg-background/95 backdrop-blur-xl">
-          <div className="px-6 py-4 flex flex-col gap-1">
+          <div className="hidden md:flex items-center gap-1">
             {links.map((l) => (
               <NavLink
                 key={l.to}
                 to={l.to}
                 end={l.to === "/"}
                 className={({ isActive }) =>
-                  `px-3 py-2.5 text-sm rounded-md ${isActive ? "bg-secondary text-foreground" : "text-muted-foreground"}`
+                  `relative px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+                    isActive
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`
                 }
               >
-                {l.label}
+                {({ isActive }) => (
+                  <>
+                    {l.label}
+                    {isActive && (
+                      <span className="absolute left-1/2 -translate-x-1/2 -bottom-0.5 h-px w-6 bg-gradient-to-r from-[hsl(217_91%_60%)] to-[hsl(258_90%_66%)]" />
+                    )}
+                  </>
+                )}
               </NavLink>
             ))}
-            <div className="flex items-center gap-2 px-3 pt-3">
+          </div>
+
+          <div className="hidden md:flex items-center gap-3">
+            <div className="flex items-center gap-1">
               {socials.map(({ href, label, Icon }) => (
                 <a
                   key={label}
@@ -102,11 +87,62 @@ export const Navbar = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+                  className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary/60 transition-colors"
                 >
-                  <Icon className="h-5 w-5" />
+                  <Icon className="h-4 w-4" />
                 </a>
               ))}
+            </div>
+            <ContactDialog
+              trigger={
+                <Button variant="hero" size="sm" className="rounded-full px-5">
+                  Book a Call <ArrowRight className="w-3.5 h-3.5" />
+                </Button>
+              }
+            />
+          </div>
+
+          <button className="md:hidden text-foreground p-2" onClick={() => setOpen(!open)} aria-label="menu">
+            {open ? <X /> : <Menu />}
+          </button>
+        </nav>
+      </div>
+
+      {open && (
+        <div className="md:hidden mt-2 mx-4 rounded-2xl glass-strong overflow-hidden">
+          <div className="px-4 py-4 flex flex-col gap-1">
+            {links.map((l) => (
+              <NavLink
+                key={l.to}
+                to={l.to}
+                end={l.to === "/"}
+                className={({ isActive }) =>
+                  `px-3 py-2.5 text-sm rounded-lg ${isActive ? "bg-secondary text-foreground" : "text-muted-foreground"}`
+                }
+              >
+                {l.label}
+              </NavLink>
+            ))}
+            <div className="flex items-center justify-between px-3 pt-3 mt-2 border-t hairline">
+              <div className="flex items-center gap-1">
+                {socials.map(({ href, label, Icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+                  >
+                    <Icon className="h-4 w-4" />
+                  </a>
+                ))}
+              </div>
+              <ContactDialog
+                trigger={
+                  <Button variant="hero" size="sm" className="rounded-full">Book a Call</Button>
+                }
+              />
             </div>
           </div>
         </div>

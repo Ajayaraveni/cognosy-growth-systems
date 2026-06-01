@@ -1,35 +1,45 @@
 import { Link } from "react-router-dom";
-
+import { ArrowUpRight, Mail } from "lucide-react";
 import logo from "@/assets/cognosy-logo-light.png";
 
 export const Footer = () => (
-  <footer className="border-t hairline mt-32">
-    <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 grid md:grid-cols-5 gap-12">
-      <div className="md:col-span-2">
+  <footer className="relative mt-32 border-t hairline overflow-hidden">
+    <div className="pointer-events-none absolute inset-x-0 -top-40 h-80 bg-hero-glow opacity-50" aria-hidden="true" />
+
+    <div className="relative max-w-7xl mx-auto px-6 lg:px-8 pt-20 pb-12 grid md:grid-cols-12 gap-12">
+      <div className="md:col-span-5">
         <Link to="/" className="flex items-center" aria-label="Cognosy AI home">
-          <img src={logo} alt="Cognosy AI" className="h-20 w-auto" />
+          <img src={logo} alt="Cognosy AI" className="h-16 w-auto" />
         </Link>
-        <p className="mt-4 text-sm text-muted-foreground max-w-sm">
+        <p className="mt-5 text-base text-muted-foreground max-w-md leading-relaxed">
           AI Business Growth Systems for ambitious companies worldwide.
         </p>
-        <div className="mt-5 space-y-1 text-sm text-muted-foreground">
-          <div>Global AI Growth Partner</div>
-          <div>
-            Email: <a href="mailto:hello@cognosy.com" className="hover:text-foreground">hello@cognosy.com</a>
-          </div>
+        <div className="mt-6 inline-flex items-center gap-3 rounded-full glass px-4 py-2 text-sm">
+          <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse-glow" />
+          <span className="text-muted-foreground">Global AI Growth Partner</span>
         </div>
+        <a
+          href="mailto:hello@cognosy.com"
+          className="mt-6 group flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <Mail className="w-4 h-4" />
+          hello@cognosy.com
+          <ArrowUpRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+        </a>
       </div>
-      <div>
-        <h4 className="text-sm font-medium mb-4">Company</h4>
-        <ul className="space-y-2 text-sm text-muted-foreground">
-          <li><Link to="/about" className="hover:text-foreground">About</Link></li>
-          <li><Link to="/services" className="hover:text-foreground">Services</Link></li>
-          <li><Link to="/contact" className="hover:text-foreground">Contact</Link></li>
+
+      <div className="md:col-span-2">
+        <h4 className="text-xs uppercase tracking-widest text-foreground/80 mb-5">Company</h4>
+        <ul className="space-y-3 text-sm text-muted-foreground">
+          <li><Link to="/about" className="hover:text-foreground transition-colors">About</Link></li>
+          <li><Link to="/services" className="hover:text-foreground transition-colors">Services</Link></li>
+          <li><Link to="/contact" className="hover:text-foreground transition-colors">Contact</Link></li>
         </ul>
       </div>
-      <div>
-        <h4 className="text-sm font-medium mb-4">Services</h4>
-        <ul className="space-y-2 text-sm text-muted-foreground">
+
+      <div className="md:col-span-3">
+        <h4 className="text-xs uppercase tracking-widest text-foreground/80 mb-5">Services</h4>
+        <ul className="space-y-3 text-sm text-muted-foreground">
           <li>AI Integration</li>
           <li>AI Automation</li>
           <li>SEO / AEO / GEO</li>
@@ -37,19 +47,31 @@ export const Footer = () => (
           <li>Trainings</li>
         </ul>
       </div>
-      <div>
-        <h4 className="text-sm font-medium mb-4">More</h4>
-        <ul className="space-y-2 text-sm text-muted-foreground">
-          <li><a href="https://academy.cognosy.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">Cognosy Academy</a></li>
+
+      <div className="md:col-span-2">
+        <h4 className="text-xs uppercase tracking-widest text-foreground/80 mb-5">More</h4>
+        <ul className="space-y-3 text-sm text-muted-foreground">
+          <li>
+            <a
+              href="https://academy.cognosy.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 hover:text-foreground transition-colors group"
+            >
+              Cognosy Academy
+              <ArrowUpRight className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity" />
+            </a>
+          </li>
         </ul>
       </div>
     </div>
-    <div className="border-t hairline">
+
+    <div className="relative border-t hairline">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6 text-xs text-muted-foreground flex flex-col sm:flex-row gap-3 sm:justify-between">
         <span>© 2025 Cognosy AI. All rights reserved.</span>
-        <div className="flex gap-5">
-          <Link to="/privacy" className="hover:text-foreground">Privacy Policy</Link>
-          <Link to="/terms" className="hover:text-foreground">Terms & Conditions</Link>
+        <div className="flex gap-6">
+          <Link to="/privacy" className="hover:text-foreground transition-colors">Privacy Policy</Link>
+          <Link to="/terms" className="hover:text-foreground transition-colors">Terms & Conditions</Link>
         </div>
       </div>
     </div>
