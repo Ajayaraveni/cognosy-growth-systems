@@ -10,19 +10,19 @@ const Services = () => (
     <section className="relative overflow-hidden">
       <div className="absolute inset-0 bg-grid opacity-25" />
       <div className="absolute inset-0 bg-hero-glow" />
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 pt-20 pb-16 md:pt-28">
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 pt-12 pb-16 md:pt-20 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass text-[11px] font-medium text-accent mb-6 uppercase tracking-[0.18em]">
-            <span className="w-1 h-1 rounded-full bg-accent" /> Services
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[hsl(217_91%_60%/0.12)] border border-[hsl(217_91%_60%/0.3)] text-[13px] font-medium text-[hsl(217_91%_70%)] mb-8">
+            <span className="w-1.5 h-1.5 rounded-full bg-[hsl(217_91%_60%)]" /> Our Services
           </div>
-          <h1 className="font-display text-5xl md:text-7xl font-semibold tracking-tighter leading-[1] max-w-4xl">
-            Five systems built to <span className="text-gradient-accent">grow your business.</span>
+          <h1 className="font-display text-5xl md:text-7xl font-bold tracking-tighter leading-[1] max-w-5xl mx-auto">
+            Seven Services. <span className="text-[hsl(217_91%_60%)]">One Intelligent Infrastructure.</span>
           </h1>
-          <p className="mt-8 text-lg text-muted-foreground max-w-2xl leading-relaxed">
-            Each service is a complete, outcome-driven system — designed, deployed and measured.
+          <p className="mt-8 text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            We architect and deploy premium AI systems that automate operations, integrate workflows, and scale intelligently with your business.
           </p>
         </motion.div>
       </div>

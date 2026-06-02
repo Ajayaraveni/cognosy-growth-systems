@@ -40,11 +40,12 @@ export const Footer = () => (
       <div className="md:col-span-3">
         <h4 className="text-xs uppercase tracking-widest text-foreground/80 mb-5">Services</h4>
         <ul className="space-y-3 text-sm text-muted-foreground">
-          <li>AI Integration</li>
-          <li>AI Automation</li>
-          <li>SEO / AEO / GEO</li>
-          <li>Personal Branding</li>
-          <li>Trainings</li>
+          <li>AI Agents</li>
+          <li>AI Chatbots</li>
+          <li>WhatsApp Automation</li>
+          <li>Voice AI</li>
+          <li>Workflow Automation</li>
+          <li>RAG Systems</li>
         </ul>
       </div>
 
