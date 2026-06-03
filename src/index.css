@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -86,14 +86,15 @@
     background-attachment: fixed;
   }
   h1, h2, h3, h4 {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Manrope', 'Inter', sans-serif;
     letter-spacing: -0.025em;
+    font-feature-settings: 'ss01', 'cv11';
   }
   ::selection { background: hsl(var(--accent) / 0.3); color: hsl(var(--foreground)); }
 }
 
 @layer utilities {
-  .font-display { font-family: 'Space Grotesk', sans-serif; }
+  .font-display { font-family: 'Manrope', 'Inter', sans-serif; }
 
   .text-gradient {
     background: var(--gradient-text);
