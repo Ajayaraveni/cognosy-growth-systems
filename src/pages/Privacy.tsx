@@ -26,11 +26,11 @@ const Privacy = () => (
         </div>
         <div>
           <h2 className="font-display text-xl font-semibold text-foreground mb-3">5. Your Rights</h2>
-          <p>You may request access, correction or deletion of your personal data at any time by emailing hello@cognosy.ai.</p>
+          <p>You may request access, correction or deletion of your personal data at any time by emailing hello@cognosy.com.</p>
         </div>
         <div>
           <h2 className="font-display text-xl font-semibold text-foreground mb-3">6. Contact</h2>
-          <p>For privacy-related questions, contact us at hello@cognosy.ai.</p>
+          <p>For privacy-related questions, contact us at hello@cognosy.com.</p>
         </div>
       </div>
     </section>

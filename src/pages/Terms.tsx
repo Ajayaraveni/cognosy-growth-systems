@@ -14,7 +14,7 @@ const Terms = () => (
         </div>
         <div>
           <h2 className="font-display text-xl font-semibold text-foreground mb-3">2. Services</h2>
-          <p>Cognosy AI provides AI Business Growth Systems including AI Integration, AI Automation, SEO/AEO/GEO, Personal Branding and Trainings. Specific deliverables are defined in individual engagement agreements.</p>
+          <p>Cognosy AI provides services in AI Automation, AI Customer Engagement, RAG Systems, Custom AI Solutions, AI Governance, Risk &amp; System Safety, and Business Growth. Specific deliverables are defined in individual engagement agreements.</p>
         </div>
         <div>
           <h2 className="font-display text-xl font-semibold text-foreground mb-3">3. Intellectual Property</h2>
@@ -34,7 +34,7 @@ const Terms = () => (
         </div>
         <div>
           <h2 className="font-display text-xl font-semibold text-foreground mb-3">7. Contact</h2>
-          <p>Questions about these terms? Email hello@cognosy.ai.</p>
+          <p>Questions about these terms? Email hello@cognosy.com.</p>
         </div>
       </div>
     </section>

@@ -55,6 +55,35 @@ export const services = [
       "Long-term AI adoption",
     ],
   },
+  {
+    slug: "ai-governance-risk-system-safety",
+    title: "AI Governance, Risk & System Safety",
+    short: "Practical support for safer AI adoption and governance readiness.",
+    what: "Help businesses take practical first steps towards safer AI adoption through structured risk assessments, data flow reviews, AI workflow safety assessments, and governance readiness support.",
+    who: "Businesses taking practical first steps towards safer AI adoption.",
+    outcome: "A structured view of AI-related risks and governance-readiness next steps.",
+    benefits: [
+      "AI Risk Assessment",
+      "Data Flow & Privacy Review",
+      "AI Workflow Safety",
+      "AI Governance Readiness",
+    ],
+  },
+  {
+    slug: "business-growth",
+    title: "Business Growth",
+    short: "Practical digital strategies and technology-enabled business improvement.",
+    what: "Help businesses identify opportunities to improve operations, customer acquisition, and business performance through practical digital strategies and technology-enabled solutions.",
+    who: "Businesses looking to improve operations, customer acquisition, and performance.",
+    outcome: "Practical priorities for operational and commercial improvement.",
+    benefits: [
+      "Business process improvement",
+      "Digital initiatives",
+      "Customer acquisition strategy",
+      "Operational efficiency",
+      "Technology-enabled business improvement",
+    ],
+  },
 ] as const;
 
 export type Service = (typeof services)[number];
