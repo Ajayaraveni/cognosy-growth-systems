@@ -22,7 +22,7 @@ const Services = () => (
             Practical AI. <span className="text-accent">Measurable outcomes.</span>
           </h1>
           <p className="mt-8 text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Four core services that automate operations, engage customers intelligently, and turn your data into a competitive advantage.
+            Six service areas spanning automation, customer engagement, AI safety, and practical business improvement.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             <ContactDialog

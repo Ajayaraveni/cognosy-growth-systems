@@ -162,10 +162,10 @@ const Contact = () => {
                 </div>
               </li>
               <li className="flex items-start gap-3">
-                <Phone className="w-4 h-4 mt-0.5 text-accent/80" />
+                <MapPin className="w-4 h-4 mt-0.5 text-accent/80" />
                 <div>
-                  <div className="text-foreground/70 text-xs uppercase tracking-wider">USA</div>
-                  <a href="tel:+16282359625" className="text-foreground hover:text-accent transition-colors">+1 628 235 9625</a>
+                  <div className="text-foreground/70 text-xs uppercase tracking-wider">Business address</div>
+                  <address className="not-italic text-foreground leading-relaxed mt-1">S. No. 9, Plot Nos. 405 &amp; 406,<br />KPHB, Alluri Trade Centre, Bhagyanagar,<br />Kukatpally, Hyderabad – 500072,<br />Telangana, India.</address>
                 </div>
               </li>
               <li className="flex items-start gap-3">

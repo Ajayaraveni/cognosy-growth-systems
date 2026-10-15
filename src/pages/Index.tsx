@@ -18,6 +18,8 @@ const iconMap: Record<string, any> = {
   "ai-customer-engagement": MessagesSquare,
   "rag-systems": Database,
   "custom-ai": Sparkles,
+  "ai-governance-risk-system-safety": ShieldCheck,
+  "business-growth": TrendingUp,
 };
 
 const fadeUp = {
@@ -47,23 +49,22 @@ const Index = () => {
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[hsl(217_91%_60%)] opacity-75" />
                   <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[hsl(217_91%_60%)]" />
                 </span>
-                Enterprise AI · Automation · Customer Engagement
+                Innovation. Growth.
               </div>
 
               <motion.h1
                 variants={fadeUp} custom={1}
                 className="font-display text-5xl md:text-7xl lg:text-[5.25rem] font-semibold tracking-[-0.04em] leading-[0.98]"
               >
-                Practical AI systems <br className="hidden md:block" />
-                that move <br className="hidden md:block" />
-                <span className="text-accent">real business numbers.</span>
+                Practical Technology. <br className="hidden md:block" />
+                <span className="text-accent">Smarter Growth.</span>
               </motion.h1>
 
               <motion.p
                 variants={fadeUp} custom={2}
                 className="mt-8 text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed"
               >
-                Cognosy designs, builds and deploys AI systems that automate operations, engage customers intelligently and turn your data into a competitive edge.
+                Cognosy helps businesses apply AI, improve workflows, and identify practical opportunities for growth through technology-driven solutions.
               </motion.p>
 
               <motion.div variants={fadeUp} custom={3} className="mt-10 flex flex-wrap gap-3">
@@ -121,8 +122,8 @@ const Index = () => {
       {/* SERVICES */}
       <Section
         eyebrow="Services"
-        title="Four core capabilities. One intelligent infrastructure."
-        subtitle="From automation to customer engagement, RAG and bespoke AI — we deliver the systems that quietly run modern businesses."
+        title="Six practical capabilities. One technology partner."
+        subtitle="From AI automation and customer engagement to safer AI adoption and business growth, we apply technology to practical business needs."
       >
         <div className="grid md:grid-cols-2 gap-5">
           {services.map((s, i) => {
@@ -308,11 +309,10 @@ const Index = () => {
             <div className="font-display text-2xl font-semibold">+91 98855 29998</div>
             <div className="mt-2 text-sm text-muted-foreground">Call our India team</div>
           </a>
-          <a href="tel:+16282359625" className="grad-border glass p-8 hover-glow block">
-            <div className="text-[10px] uppercase tracking-[0.22em] text-accent mb-3">USA</div>
-            <div className="font-display text-2xl font-semibold">+1 628 235 9625</div>
-            <div className="mt-2 text-sm text-muted-foreground">Call our US team</div>
-          </a>
+          <div className="grad-border glass p-8">
+            <div className="text-[10px] uppercase tracking-[0.22em] text-accent mb-3">Business address</div>
+            <address className="not-italic font-medium leading-relaxed">S. No. 9, Plot Nos. 405 &amp; 406,<br />KPHB, Alluri Trade Centre, Bhagyanagar,<br />Kukatpally, Hyderabad – 500072,<br />Telangana, India.</address>
+          </div>
           <a href="mailto:hello@cognosy.com" className="grad-border glass p-8 hover-glow block">
             <div className="text-[10px] uppercase tracking-[0.22em] text-accent mb-3">Email</div>
             <div className="font-display text-2xl font-semibold">hello@cognosy.com</div>

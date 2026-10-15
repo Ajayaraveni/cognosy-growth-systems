@@ -3,7 +3,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X, Instagram, Youtube, Twitter, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ContactDialog } from "@/components/ContactDialog";
-import logo from "@/assets/cognosy-logo-light.png";
+import logo from "@/assets/cognosy-logo-updated.png";
 
 const links = [
   { to: "/", label: "Home" },
@@ -45,11 +45,11 @@ export const Navbar = () => {
           className={`flex items-center justify-between rounded-2xl transition-all duration-500 px-4 lg:px-6 ${
             scrolled
               ? "glass-strong h-16 shadow-[0_10px_40px_-20px_hsl(0_0%_0%/0.6)]"
-              : "bg-transparent h-20"
+              : "bg-transparent h-24"
           }`}
         >
           <Link to="/" className="flex items-center gap-3" aria-label="Cognosy AI home">
-            <img src={logo} alt="Cognosy AI" className={`w-auto transition-all duration-500 ${scrolled ? "h-12" : "h-16"}`} />
+            <img src={logo} alt="Cognosy AI — Innovation. Growth." className={`w-auto transition-all duration-500 ${scrolled ? "h-14" : "h-20"}`} />
           </Link>
 
           <div className="hidden md:flex items-center gap-1">

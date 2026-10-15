@@ -2,14 +2,9 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight, Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ContactDialog } from "@/components/ContactDialog";
-import logo from "@/assets/cognosy-logo-light.png";
+import logo from "@/assets/cognosy-logo-updated.png";
 
-const serviceLinks = [
-  { label: "AI Automation", slug: "ai-automation" },
-  { label: "AI Customer Engagement", slug: "ai-customer-engagement" },
-  { label: "RAG Systems", slug: "rag-systems" },
-  { label: "Custom AI Solutions", slug: "custom-ai" },
-];
+import { services } from "@/data/services";
 
 export const Footer = () => (
   <footer className="relative mt-32 border-t hairline overflow-hidden">
@@ -19,14 +14,14 @@ export const Footer = () => (
       {/* Brand */}
       <div className="md:col-span-4">
         <Link to="/" className="flex items-center" aria-label="Cognosy home">
-          <img src={logo} alt="Cognosy" className="h-14 w-auto" />
+          <img src={logo} alt="Cognosy — Innovation. Growth." className="h-20 w-auto" />
         </Link>
         <p className="mt-5 text-sm text-muted-foreground leading-relaxed max-w-sm">
           Cognosy helps businesses automate operations, engage customers intelligently, and deploy practical AI systems that deliver measurable results.
         </p>
         <div className="mt-6 inline-flex items-center gap-2.5 rounded-full glass px-3.5 py-1.5 text-xs">
           <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse-glow" />
-          <span className="text-muted-foreground">Global AI Implementation Partner</span>
+          <span className="text-muted-foreground">Innovation. Growth.</span>
         </div>
       </div>
 
@@ -34,9 +29,9 @@ export const Footer = () => (
       <div className="md:col-span-2">
         <h4 className="text-[11px] font-semibold uppercase tracking-[0.18em] text-foreground/85 mb-5">Services</h4>
         <ul className="space-y-3 text-sm text-muted-foreground">
-          {serviceLinks.map((s) => (
+          {services.map((s) => (
             <li key={s.slug}>
-              <Link to={`/services#${s.slug}`} className="hover:text-foreground transition-colors">{s.label}</Link>
+              <Link to={`/services#${s.slug}`} className="hover:text-foreground transition-colors">{s.title}</Link>
             </li>
           ))}
         </ul>
@@ -48,16 +43,13 @@ export const Footer = () => (
         <ul className="space-y-3.5 text-sm text-muted-foreground">
           <li className="flex items-start gap-2.5">
             <MapPin className="w-3.5 h-3.5 mt-0.5 text-accent/80 flex-shrink-0" />
+            <address className="not-italic leading-relaxed">S. No. 9, Plot Nos. 405 &amp; 406,<br />KPHB, Alluri Trade Centre, Bhagyanagar,<br />Kukatpally, Hyderabad – 500072,<br />Telangana, India.</address>
+          </li>
+          <li className="flex items-start gap-2.5">
+            <Phone className="w-3.5 h-3.5 mt-0.5 text-accent/80 flex-shrink-0" />
             <div>
               <div className="text-foreground/80 text-xs uppercase tracking-wider mb-0.5">India</div>
               <a href="tel:+919885529998" className="hover:text-foreground transition-colors">+91 98855 29998</a>
-            </div>
-          </li>
-          <li className="flex items-start gap-2.5">
-            <MapPin className="w-3.5 h-3.5 mt-0.5 text-accent/80 flex-shrink-0" />
-            <div>
-              <div className="text-foreground/80 text-xs uppercase tracking-wider mb-0.5">USA</div>
-              <a href="tel:+16282359625" className="hover:text-foreground transition-colors">+1 628 235 9625</a>
             </div>
           </li>
           <li className="flex items-center gap-2.5">
