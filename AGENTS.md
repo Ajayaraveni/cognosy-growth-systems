@@ -1,0 +1,1 @@
+Build the Vite application into the root `dist` directory so production hosting serves the expected static output.
