@@ -1,1 +1,1 @@
-Build the Vite application into the root `dist` directory so production hosting serves the expected static output.
+Export Vite settings as a static `defineConfig` object with the React SWC plugin array so deployment tools can inspect it, and serve `dist` through Wrangler assets with SPA fallback for direct client-side routes.
